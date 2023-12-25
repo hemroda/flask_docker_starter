@@ -1,6 +1,7 @@
 from flask.cli import FlaskGroup
 
-from main import app, db, User
+from main import app, db
+from blueprints.admin.models.user import User
 
 
 cli = FlaskGroup(app)
@@ -15,7 +16,7 @@ def create_db():
 
 @cli.command("seed_first_user")
 def seed_first_user():
-    db.session.add(User(email="jsmith@maavita.com"))
+    db.session.add(User(email="jsmith@flask_docker_starter.com"))
     db.session.commit()
 
 
